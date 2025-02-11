@@ -7,9 +7,9 @@
             InitializeComponent();
         }
 
-        private void OnStartClicked(object sender, EventArgs e)
+        private async void OnStartClicked(object sender, EventArgs e)
         {
-            DisplayAlert("Start", "Rozpoczynamy grę!", "OK");
+            await Navigation.PushAsync(new GamePage());
         }
 
         private void OnSettingsClicked(object sender, EventArgs e)

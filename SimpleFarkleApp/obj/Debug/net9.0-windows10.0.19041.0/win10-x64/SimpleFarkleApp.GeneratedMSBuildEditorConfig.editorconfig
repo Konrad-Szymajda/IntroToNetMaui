@@ -28,6 +28,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = SimpleFarkleApp.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
+[C:/Projects/IntroToNetMaui/SimpleFarkleApp/GamePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = SimpleFarkleApp.GamePage.xaml
+build_metadata.AdditionalFiles.TargetPath = GamePage.xaml
+build_metadata.AdditionalFiles.RelativePath = GamePage.xaml
+
 [C:/Projects/IntroToNetMaui/SimpleFarkleApp/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = SimpleFarkleApp.MainPage.xaml

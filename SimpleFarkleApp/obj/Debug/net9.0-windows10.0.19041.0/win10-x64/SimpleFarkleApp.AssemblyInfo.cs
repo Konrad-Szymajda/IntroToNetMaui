@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SimpleFarkleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+7b3f09a30b79dacd77dcad991af3f9219a60a69b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+d9bf9d70363d15c9968172f133c844b26fe18a34")]
 [assembly: System.Reflection.AssemblyProductAttribute("SimpleFarkleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SimpleFarkleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
