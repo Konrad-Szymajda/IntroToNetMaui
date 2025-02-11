@@ -2,24 +2,24 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void OnStartClicked(object sender, EventArgs e)
         {
-            count++;
+            DisplayAlert("Start", "Rozpoczynamy grę!", "OK");
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        private void OnSettingsClicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Ustawienia", "Otwieram ustawienia.", "OK");
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private void OnInfoClicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Informacje", "Farkle - gra w kości!", "OK");
         }
     }
-
 }

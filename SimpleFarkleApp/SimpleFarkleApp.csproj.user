@@ -6,9 +6,6 @@
     <ActiveDebugProfile>Windows Machine</ActiveDebugProfile>
   </PropertyGroup>
   <ItemGroup>
-    <None Update="AppShell.xaml">
-      <SubType>Designer</SubType>
-    </None>
     <None Update="MainPage.xaml">
       <SubType>Designer</SubType>
     </None>
