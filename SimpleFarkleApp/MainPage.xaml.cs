@@ -2,27 +2,24 @@
 {
     public partial class MainPage : ContentPage
     {
+        int count = 0;
+
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnStartClicked(object sender, EventArgs e)
+        private void OnCounterClicked(object sender, EventArgs e)
         {
-            // Przejście do strony gry (docelowo zmień na stronę gry)
-            DisplayAlert("Start", "Rozpoczynamy grę!", "OK");
-        }
+            count++;
 
-        private void OnSettingsClicked(object sender, EventArgs e)
-        {
-            // Przejście do ustawień (docelowo zamień na nawigację do strony ustawień)
-            DisplayAlert("Ustawienia", "Otwieram ustawienia.", "OK");
-        }
+            if (count == 1)
+                CounterBtn.Text = $"Clicked {count} time";
+            else
+                CounterBtn.Text = $"Clicked {count} times";
 
-        private void OnInfoClicked(object sender, EventArgs e)
-        {
-            // Wyświetlenie informacji o grze
-            DisplayAlert("Informacje", "Farkle - gra w kości!", "OK");
+            SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
+
 }
