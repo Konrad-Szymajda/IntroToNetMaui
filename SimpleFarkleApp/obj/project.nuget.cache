@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OMHIfOwo0hQ=",
+  "dgSpecHash": "kqIGBRioFVU=",
   "success": true,
-  "projectFilePath": "C:\\Projects\\SimpleFarkleApp\\SimpleFarkleApp.csproj",
+  "projectFilePath": "C:\\Projects\\IntroToNetMaui\\SimpleFarkleApp\\SimpleFarkleApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Konrad Szymajda\\.nuget\\packages\\googlegson\\2.11.0.3\\googlegson.2.11.0.3.nupkg.sha512",
     "C:\\Users\\Konrad Szymajda\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.0\\microsoft.extensions.configuration.9.0.0.nupkg.sha512",

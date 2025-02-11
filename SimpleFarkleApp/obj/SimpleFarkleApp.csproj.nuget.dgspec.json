@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\SimpleFarkleApp\\SimpleFarkleApp.csproj": {}
+    "C:\\Projects\\IntroToNetMaui\\SimpleFarkleApp\\SimpleFarkleApp.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\SimpleFarkleApp\\SimpleFarkleApp.csproj": {
+    "C:\\Projects\\IntroToNetMaui\\SimpleFarkleApp\\SimpleFarkleApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\SimpleFarkleApp\\SimpleFarkleApp.csproj",
+        "projectUniqueName": "C:\\Projects\\IntroToNetMaui\\SimpleFarkleApp\\SimpleFarkleApp.csproj",
         "projectName": "SimpleFarkleApp",
-        "projectPath": "C:\\Projects\\SimpleFarkleApp\\SimpleFarkleApp.csproj",
+        "projectPath": "C:\\Projects\\IntroToNetMaui\\SimpleFarkleApp\\SimpleFarkleApp.csproj",
         "packagesPath": "C:\\Users\\Konrad Szymajda\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\SimpleFarkleApp\\obj\\",
+        "outputPath": "C:\\Projects\\IntroToNetMaui\\SimpleFarkleApp\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
