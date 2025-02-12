@@ -26,12 +26,12 @@
         </Grid>
 
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-            <Image x:Name="Die1" Source="dice1.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die2" Source="dice2.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die3" Source="dice3.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die4" Source="dice4.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die5" Source="dice5.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die6" Source="dice6.png" WidthRequest="50" HeightRequest="50" />
+            <Image x:Name="Die1" Source="sleepydice.png" WidthRequest="50" HeightRequest="50" />
+            <Image x:Name="Die2" Source="sleepydice.png" WidthRequest="50" HeightRequest="50" />
+            <Image x:Name="Die3" Source="sleepydice.png" WidthRequest="50" HeightRequest="50" />
+            <Image x:Name="Die4" Source="sleepydice.png" WidthRequest="50" HeightRequest="50" />
+            <Image x:Name="Die5" Source="sleepydice.png" WidthRequest="50" HeightRequest="50" />
+            <Image x:Name="Die6" Source="sleepydice.png" WidthRequest="50" HeightRequest="50" />
         </HorizontalStackLayout>
 
         <Button Text="Rzuć Kośćmi" Clicked="OnRollDiceClicked" HorizontalOptions="Center" />

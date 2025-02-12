@@ -13,7 +13,18 @@
         public GamePage()
         {
             InitializeComponent();
+            SetDiceToSleep();
             AttachTapHandlers();
+        }
+
+        private void SetDiceToSleep()
+        {
+            var dieImages = new Image[] { Die1, Die2, Die3, Die4, Die5, Die6 };
+            foreach (var die in dieImages)
+            {
+                die.Source = "sleepydice.png";
+                die.IsEnabled = false;
+            }
         }
 
         private void AttachTapHandlers()
@@ -48,8 +59,7 @@
         private void OnRollDiceClicked(object sender, EventArgs e)
         {
             var diceImages = new[] { "dice1.png", "dice2.png", "dice3.png", "dice4.png", "dice5.png", "dice6.png" };
-            var diceValues = new[] { 1, 2, 3, 4, 5, 6 };
-            var dieImages = new Image[] { Die1, Die2, Die3, Die4, Die5, Die6 };
+            var dieImagesArray = new Image[] { Die1, Die2, Die3, Die4, Die5, Die6 };
 
             selectedDice.Clear();
             dieValues.Clear();
@@ -57,12 +67,11 @@
             for (int i = 0; i < 6; i++)
             {
                 int roll = _random.Next(0, diceImages.Length);
-                dieImages[i].Source = diceImages[roll];
-                dieValues[dieImages[i]] = diceValues[roll];
-                dieImages[i].Scale = 1.0;
+                dieImagesArray[i].Source = diceImages[roll];
+                dieValues[dieImagesArray[i]] = roll + 1;
+                dieImagesArray[i].Scale = 1.0;
+                dieImagesArray[i].IsEnabled = true;
             }
-
-            RoundTotal.Text = "0";
         }
 
         private void CalculateSelectedScore()
@@ -97,35 +106,49 @@
                     }
                 }
             }
-            RoundTotal.Text = score.ToString();
+            if (_currentPlayer == 1)
+            {
+                Player1Selected.Text = score.ToString();
+            }
+            else
+            {
+                Player2Selected.Text = score.ToString();
+            }
         }
 
         private void OnScoreAndContinueClicked(object sender, EventArgs e)
         {
-            int scoredPoints = int.Parse(RoundTotal.Text);
+            int scoredPoints = 0;
 
             if (_currentPlayer == 1)
             {
+                scoredPoints = int.Parse(Player1Selected.Text);
                 _player1Score += scoredPoints;
                 Player1Score.Text = _player1Score.ToString();
+
+                Player1Selected.Text = "0";
             }
             else
             {
+                scoredPoints = int.Parse(Player2Selected.Text);
                 _player2Score += scoredPoints;
                 Player2Score.Text = _player2Score.ToString();
-            }
 
-            _roundPoints = 0;
-            RoundTotal.Text = "0";
+                Player2Selected.Text = "0";
+            }
             selectedDice.Clear();
 
-            _currentPlayer = _currentPlayer == 1 ? 2 : 1;
+            foreach (var die in selectedDice)
+            {
+                die.Source = "sleepydice.png";
+                die.IsEnabled = false;
+            }
+            OnRollDiceClicked(sender, e);
         }
 
         private void OnScoreAndPassClicked(object sender, EventArgs e)
         {
             _roundPoints = 0;
-            RoundTotal.Text = "0";
             selectedDice.Clear();
 
             _currentPlayer = _currentPlayer == 1 ? 2 : 1;
