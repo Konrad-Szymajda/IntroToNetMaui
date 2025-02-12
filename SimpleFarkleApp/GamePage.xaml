@@ -3,45 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SimpleFarkleApp.GamePage"
              Title="GamePage">
-
-    <VerticalStackLayout Padding="20" Spacing="20">
-
-        <!-- Tabela wyników -->
-        <Grid ColumnDefinitions="*, Auto, *, Auto, *" RowDefinitions="Auto, Auto, Auto, Auto">
-            <!-- Nagłówki -->
-            <Label Text="Gracz 1" HorizontalOptions="Center" Grid.Column="0" Grid.Row="0" />
-            <Label Text="Goal" HorizontalOptions="Center" Grid.Column="1" Grid.Row="0" />
-            <Label Text="Gracz 2" HorizontalOptions="Center" Grid.Column="3" Grid.Row="0" />
-
-            <!-- Wyniki -->
-            <Label x:Name="Player1Score" Text="0" HorizontalOptions="Center" Grid.Column="0" Grid.Row="1" />
-            <Label x:Name="RoundPoints" Text="Round" HorizontalOptions="Center" Grid.Column="1" Grid.Row="1" />
-            <Label x:Name="Player2Score" Text="0" HorizontalOptions="Center" Grid.Column="3" Grid.Row="1" />
-
-            <!-- Kości -->
-            <Label x:Name="Player1Selected" Text="0" HorizontalOptions="Center" Grid.Column="0" Grid.Row="2" />
-            <Label x:Name="RoundTotal" Text="Selected" HorizontalOptions="Center" Grid.Column="1" Grid.Row="2" />
-            <Label x:Name="Player2Selected" Text="0" HorizontalOptions="Center" Grid.Column="3" Grid.Row="2" />
-        </Grid>
-
-        <!-- Kości -->
-        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-            <Image x:Name="Die1" Source="dice1.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die2" Source="dice2.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die3" Source="dice3.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die4" Source="dice4.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die5" Source="dice5.png" WidthRequest="50" HeightRequest="50" />
-            <Image x:Name="Die6" Source="dice6.png" WidthRequest="50" HeightRequest="50" />
-        </HorizontalStackLayout>
-
-        <!-- Przycisk do rzucania kośćmi -->
-        <Button Text="Rzuć Kośćmi" Clicked="OnRollDiceClicked" HorizontalOptions="Center" />
-
-        <!-- Przyciski do zakończenia lub przejścia do kolejnej rundy -->
-        <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
-            <Button Text="Score and Continue" Clicked="OnScoreAndContinueClicked" />
-            <Button Text="Score and Pass" Clicked="OnScoreAndPassClicked" />
-        </HorizontalStackLayout>
-
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
     </VerticalStackLayout>
 </ContentPage>
