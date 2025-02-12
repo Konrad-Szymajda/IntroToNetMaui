@@ -941,6 +941,3 @@ C:\Projects\IntroToNetMaui\SimpleFarkleApp\obj\Debug\net9.0-windows10.0.19041.0\
 C:\Projects\IntroToNetMaui\SimpleFarkleApp\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 C:\Projects\IntroToNetMaui\SimpleFarkleApp\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 C:\Projects\IntroToNetMaui\SimpleFarkleApp\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
-C:\Projects\IntroToNetMaui\SimpleFarkleApp\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.Maui.Controls.HotReload.Forms.dll
-C:\Projects\IntroToNetMaui\SimpleFarkleApp\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
-C:\Projects\IntroToNetMaui\SimpleFarkleApp\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Microsoft.VisualStudio.DesignTools.TapContract.dll
