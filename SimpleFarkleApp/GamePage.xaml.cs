@@ -89,6 +89,7 @@
 
             selectedDice.Clear();
             dieValues.Clear();
+            bool hasScoringDice = false;
 
             for (int i = 0; i < 6; i++)
             {
@@ -97,6 +98,17 @@
                 dieValues[dieImagesArray[i]] = roll + 1;
                 dieImagesArray[i].Scale = 1.0;
                 dieImagesArray[i].IsEnabled = true;
+
+                if (CanDieScore(roll + 1))
+                {
+                    hasScoringDice = true;
+                }
+            }
+
+            if (!hasScoringDice)
+            {
+                DisplayAlert("Skucha!", "Nie masz żadnych punktujących kości!", "OK");
+                OnScoreAndPassClicked(sender, e);
             }
         }
 
@@ -140,18 +152,23 @@
 
         private void OnScoreAndContinueClicked(object sender, EventArgs e)
         {
-            int scoredPoints = 0;
+            int scoredPoints = _currentPlayer == 1 ? int.Parse(Player1Selected.Text) : int.Parse(Player2Selected.Text);
+
+            if (scoredPoints == 0)
+            {
+                DisplayAlert("Skucha!", "Nie masz żadnych punktujących kości!", "OK");
+                OnScoreAndPassClicked(sender, e);
+                return;
+            }
 
             if (_currentPlayer == 1)
             {
-                scoredPoints = int.Parse(Player1Selected.Text);
                 _player1Score += scoredPoints;
                 Player1Score.Text = _player1Score.ToString();
                 Player1Selected.Text = "0";
             }
             else
             {
-                scoredPoints = int.Parse(Player2Selected.Text);
                 _player2Score += scoredPoints;
                 Player2Score.Text = _player2Score.ToString();
                 Player2Selected.Text = "0";
