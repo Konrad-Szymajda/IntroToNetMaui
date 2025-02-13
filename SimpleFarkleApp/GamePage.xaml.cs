@@ -15,7 +15,6 @@
             SetDiceToSleep();
             AttachTapHandlers();
         }
-
         private void SetDiceToSleep()
         {
             var dieImages = new Image[] { Die1, Die2, Die3, Die4, Die5, Die6 };
@@ -183,9 +182,9 @@
 
             foreach (var die in dieImagesArray)
             {
-                die.Source = "sleepydice.png";  // Ustawienie obrazka sleepydice.png
-                die.IsEnabled = false;  // Kość jest wyłączona, nie można jej klikać
-                die.Scale = 1.0;  // Normalny rozmiar kości
+                die.Source = "sleepydice.png";
+                die.IsEnabled = false;
+                die.Scale = 1.0;
             }
         }
 
