@@ -177,9 +177,37 @@
             OnRollDiceSleep(sender, e);
         }
 
+        private void SetAllDiceToSleep()
+        {
+            var dieImagesArray = new Image[] { Die1, Die2, Die3, Die4, Die5, Die6 };
+
+            foreach (var die in dieImagesArray)
+            {
+                die.Source = "sleepydice.png";  // Ustawienie obrazka sleepydice.png
+                die.IsEnabled = false;  // Kość jest wyłączona, nie można jej klikać
+                die.Scale = 1.0;  // Normalny rozmiar kości
+            }
+        }
+
         private void OnScoreAndPassClicked(object sender, EventArgs e)
         {
+
+            int scoredPoints = _currentPlayer == 1 ? int.Parse(Player1Selected.Text) : int.Parse(Player2Selected.Text);
+            if (_currentPlayer == 1)
+            {
+                _player1Score += scoredPoints;
+                Player1Score.Text = _player1Score.ToString();
+                Player1Selected.Text = "0";
+            }
+            else
+            {
+                _player2Score += scoredPoints;
+                Player2Score.Text = _player2Score.ToString();
+                Player2Selected.Text = "0";
+            }
             selectedDice.Clear();
+            SetAllDiceToSleep();
+
             _currentPlayer = _currentPlayer == 1 ? 2 : 1;
         }
     }
