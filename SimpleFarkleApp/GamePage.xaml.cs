@@ -86,22 +86,27 @@
             var diceImages = new[] { "dice1.png", "dice2.png", "dice3.png", "dice4.png", "dice5.png", "dice6.png" };
             var dieImagesArray = new Image[] { Die1, Die2, Die3, Die4, Die5, Die6 };
 
-            selectedDice.Clear();
-            dieValues.Clear();
             bool hasScoringDice = false;
 
-            for (int i = 0; i < 6; i++)
+            foreach (var die in dieImagesArray)
             {
-                int roll = _random.Next(0, diceImages.Length);
-                dieImagesArray[i].Source = diceImages[roll];
-                dieValues[dieImagesArray[i]] = roll + 1;
-                dieImagesArray[i].Scale = 1.0;
-                dieImagesArray[i].IsEnabled = true;
-
-                if (CanDieScore(roll + 1))
+                if (!selectedDice.Contains(die))
                 {
-                    hasScoringDice = true;
+                    int roll = _random.Next(0, diceImages.Length);
+                    die.Source = diceImages[roll];
+                    dieValues[die] = roll + 1;
+                    die.IsEnabled = true;
+                    die.Scale = 1.0;
+
+                    if (CanDieScore(roll + 1))
+                    {
+                        hasScoringDice = true;
+                    }
                 }
+            }
+            foreach (var die in selectedDice)
+            {
+                die.Scale = 1.20;
             }
 
             if (!hasScoringDice)
@@ -118,35 +123,46 @@
                 die.Source = "sleepydice.png";
                 die.IsEnabled = false;
             }
-            selectedDice.Clear();
         }
 
         private void CalculateSelectedScore()
         {
             var selectedValues = selectedDice
-                .Where(d => dieValues.ContainsKey(d))
+                .Where(d => dieValues.ContainsKey(d) && d.IsEnabled)
                 .Select(d => dieValues[d])
                 .ToList();
+
             selectedValues.Sort();
+
             int score = 0;
             var counts = selectedValues.GroupBy(x => x).ToDictionary(g => g.Key, g => g.Count());
 
-            if (selectedValues.SequenceEqual(new List<int> { 1, 2, 3, 4, 5, 6 })) score += 1500;
-            else if (selectedValues.SequenceEqual(new List<int> { 1, 2, 3, 4, 5 })) score += 500;
-            else if (selectedValues.SequenceEqual(new List<int> { 2, 3, 4, 5, 6 })) score += 750;
+            if (selectedValues.SequenceEqual(new List<int> { 1, 2, 3, 4, 5, 6 }))
+                score += 1500;
+            else if (selectedValues.SequenceEqual(new List<int> { 1, 2, 3, 4, 5 }))
+                score += 500;
+            else if (selectedValues.SequenceEqual(new List<int> { 2, 3, 4, 5, 6 }))
+                score += 750;
             else
             {
                 foreach (var kvp in counts)
                 {
                     int die = kvp.Key;
                     int count = kvp.Value;
-                    if (die == 1) score += count >= 3 ? 1000 * (int)Math.Pow(2, count - 3) : count * 100;
-                    else if (die == 5) score += count >= 3 ? 500 * (int)Math.Pow(2, count - 3) : count * 50;
-                    else if (count >= 3) score += die * 100 * (int)Math.Pow(2, count - 3);
+
+                    if (die == 1)
+                        score += count >= 3 ? 1000 * (int)Math.Pow(2, count - 3) : count * 100;
+                    else if (die == 5)
+                        score += count >= 3 ? 500 * (int)Math.Pow(2, count - 3) : count * 50;
+                    else if (count >= 3)
+                        score += die * 100 * (int)Math.Pow(2, count - 3);
                 }
             }
-            if (_currentPlayer == 1) Player1Selected.Text = score.ToString();
-            else Player2Selected.Text = score.ToString();
+
+            if (_currentPlayer == 1)
+                Player1Selected.Text = score.ToString();
+            else
+                Player2Selected.Text = score.ToString();
         }
 
         private void OnScoreAndContinueClicked(object sender, EventArgs e)
@@ -158,7 +174,6 @@
                 OnScoreAndPassClicked(sender, e);
                 return;
             }
-
             if (_currentPlayer == 1)
             {
                 _player1Score += scoredPoints;
@@ -170,6 +185,24 @@
                 _player2Score += scoredPoints;
                 Player2Score.Text = _player2Score.ToString();
                 Player2Selected.Text = "0";
+            }
+            var diceImagesArray = new Image[] { Die1, Die2, Die3, Die4, Die5, Die6 };
+
+            foreach (var die in diceImagesArray)
+            {
+                if (!selectedDice.Contains(die))
+                {
+                    var roll = _random.Next(0, 6);
+                    die.Source = $"dice{roll + 1}.png";
+                    dieValues[die] = roll + 1;
+                    die.IsEnabled = true;
+                    die.Scale = 1.0;
+                }
+            }
+
+            foreach (var die in selectedDice)
+            {
+                die.Scale = 1.20;
             }
 
             OnRollDiceSleep(sender, e);
