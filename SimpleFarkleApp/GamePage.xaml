@@ -34,7 +34,7 @@
             <Image x:Name="Die6" Source="sleepydice.png" WidthRequest="50" HeightRequest="50" />
         </HorizontalStackLayout>
 
-        <Button Text="Rzuć Kośćmi" Clicked="OnRollDiceClicked" HorizontalOptions="Center" />
+        <Button x:Name="RollDiceButton" Text="Rzuć Kośćmi" Clicked="OnRollDiceClicked" HorizontalOptions="Center" />
 
         <HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
             <Button Text="Score and Continue" Clicked="OnScoreAndContinueClicked" />

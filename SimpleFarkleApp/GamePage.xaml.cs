@@ -83,6 +83,8 @@
 
         private void OnRollDiceClicked(object sender, EventArgs e)
         {
+            RollDiceButton.IsVisible = false;
+
             var diceImages = new[] { "dice1.png", "dice2.png", "dice3.png", "dice4.png", "dice5.png", "dice6.png" };
             var dieImagesArray = new Image[] { Die1, Die2, Die3, Die4, Die5, Die6 };
 
@@ -104,6 +106,7 @@
                     }
                 }
             }
+
             foreach (var die in selectedDice)
             {
                 die.Scale = 1.20;
@@ -279,6 +282,8 @@
             selectedDice.Clear();
             SetAllDiceToSleep();
             _currentPlayer = _currentPlayer == 1 ? 2 : 1;
+
+            RollDiceButton.IsVisible = true;
         }
 
         private async void ShowGameOverDialog(int winningPlayer)
