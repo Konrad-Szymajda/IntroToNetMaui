@@ -155,7 +155,6 @@
 
             if (scoredPoints == 0)
             {
-                DisplayAlert("Skucha!", "Nie masz żadnych punktujących kości!", "OK");
                 OnScoreAndPassClicked(sender, e);
                 return;
             }
@@ -190,24 +189,104 @@
 
         private void OnScoreAndPassClicked(object sender, EventArgs e)
         {
-
             int scoredPoints = _currentPlayer == 1 ? int.Parse(Player1Selected.Text) : int.Parse(Player2Selected.Text);
-            if (_currentPlayer == 1)
+
+            if (scoredPoints == 0)
             {
-                _player1Score += scoredPoints;
-                Player1Score.Text = _player1Score.ToString();
-                Player1Selected.Text = "0";
+                DisplayAlert("Skucha!", "Nie masz żadnych punktujących kości!", "OK");
+                if (_currentPlayer == 1)
+                {
+                    _player1Score = 0;
+                    Player1Score.Text = "0";
+                    Player1Selected.Text = "0";
+                }
+                else
+                {
+                    _player2Score = 0;
+                    Player2Score.Text = "0";
+                    Player2Selected.Text = "0";
+                }
             }
             else
             {
-                _player2Score += scoredPoints;
-                Player2Score.Text = _player2Score.ToString();
-                Player2Selected.Text = "0";
+                if (_currentPlayer == 1)
+                {
+                    _player1Score += scoredPoints;
+                    int totalScore = int.Parse(Player1ScoreTotal.Text) + _player1Score;
+                    Player1ScoreTotal.Text = totalScore.ToString();
+
+                    if (totalScore >= 5000)
+                    {
+                        ShowGameOverDialog(1);
+                        return;
+                    }
+                }
+                else
+                {
+                    _player2Score += scoredPoints;
+                    int totalScore = int.Parse(Player2ScoreTotal.Text) + _player2Score;
+                    Player2ScoreTotal.Text = totalScore.ToString();
+
+                    if (totalScore >= 5000)
+                    {
+                        ShowGameOverDialog(2);
+                        return;
+                    }
+                }
             }
+
+            Player1Score.Text = "0";
+            Player1Selected.Text = "0";
+            _player1Score = 0;
+
+            Player2Score.Text = "0";
+            Player2Selected.Text = "0";
+            _player2Score = 0;
+
             selectedDice.Clear();
             SetAllDiceToSleep();
-
             _currentPlayer = _currentPlayer == 1 ? 2 : 1;
+        }
+
+        private async void ShowGameOverDialog(int winningPlayer)
+        {
+            bool retry = await DisplayAlert("!!!GAME WINS!!!", $"PLAYER {winningPlayer}", "Retry", "Menu");
+
+            if (retry)
+            {
+                RestartGame();
+            }
+            else
+            {
+                await GoToMenu();
+            }
+        }
+
+        private void RestartGame()
+        {
+            _player1Score = 0;
+            _player2Score = 0;
+            Player1ScoreTotal.Text = "0";
+            Player2ScoreTotal.Text = "0";
+            Player1Score.Text = "0";
+            Player2Score.Text = "0";
+            Player1Selected.Text = "0";
+            Player2Selected.Text = "0";
+            _currentPlayer = 1;
+            selectedDice.Clear();
+            SetAllDiceToSleep();
+        }
+
+        private async Task GoToMenu()
+        {
+            if (Application.Current != null && Application.Current.Windows.Count > 0)
+            {
+                await Navigation.PopToRootAsync();
+            }
+            else
+            {
+                await DisplayAlert("Błąd", "Wystąpił problem z aplikacją. Proszę spróbować ponownie.", "OK");
+            }
         }
     }
 }

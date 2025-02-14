@@ -1,4 +1,6 @@
-﻿namespace SimpleFarkleApp
+﻿using Microsoft.Maui.Controls;
+
+namespace SimpleFarkleApp
 {
     public partial class App : Application
     {
